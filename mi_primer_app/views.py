@@ -1,73 +1,71 @@
 from django.shortcuts import render, redirect
-from .models import Familiar, Curso, Estudiante
-from .forms import CursoForm, EstudianteForm
+from .models import Profesor, Atleta, Deporte
+from .forms import ProfesorForm, AtletaForm, DeporteForm
 
 # Create your views here.
 from django.http import HttpResponse
 def inicio(request):
     return render(request, 'mi_primer_app/inicio.html')
 
-def saludo(request):
-    return HttpResponse("Hola, mundo!!!")
-
-def saludo_con_template(request):
-    return render(request, 'mi_primer_app/saludo.html') 
-
-def crear_familiar(request, nombre):
-    if nombre is not None:
-        nuevo_familiar = Familiar(
-            nombre=nombre,
-            apellido= "Apellido Ejemplo",
-            edad = 30,
-            fecha_nacimiento="1993-01-01",
-            parentesco="Primo",        
-        )
-        nuevo_familiar.save()
-    return render(request, "mi_primer_app/crear_familiar.html", {"nombre": nombre})
-
-def crear_curso(request):
+def crear_profesor(request):
     if request.method == 'POST':
-        form = CursoForm(request.POST)
+        form = ProfesorForm(request.POST)
         if form.is_valid():
             # Procesar el formulario y guardar el curso
-            nuevo_curso = Curso(
-                nombre=form.cleaned_data['nombre'],
-                descripcion=form.cleaned_data['descripcion'],
-                duracion_semanas=form.cleaned_data['duracion_semanas'],
-                fecha_inicio=form.cleaned_data['fecha_inicio'],
-                activo=form.cleaned_data['activo']        
-            )
-            nuevo_curso.save()
-            return redirect('cursos')
-    else:
-        form = CursoForm()  
-        return render(request, "mi_primer_app/crear_curso.html", {"form":form})
-
-def crear_estudiante(request):
-    if request.method == 'POST':
-        form = EstudianteForm(request.POST)
-        if form.is_valid():
-            # Procesar el formulario y guardar el estudiante
-            nuevo_curso = Estudiante(
+            nuevo_profesor = Profesor(
                 nombre=form.cleaned_data['nombre'],
                 apellido=form.cleaned_data['apellido'],
-                email=form.cleaned_data['email'],
                 edad=form.cleaned_data['edad'],
-                fecha_inscripcion=form.cleaned_data['fecha_inscripcion']
+                deporte=form.cleaned_data['deporte'], 
             )
-            nuevo_curso.save()
+            nuevo_profesor.save()
             return redirect('inicio')
     else:
-        form = EstudianteForm()
-        return render(request, 'mi_primer_app/crear_estudiante.html', {'form': form})
+        form = ProfesorForm()  
+        return render(request, "mi_primer_app/crear_profesor.html", {"form":form})
+    
+def crear_atleta(request):
+    if request.method == 'POST':
+        form = AtletaForm(request.POST)
+        if form.is_valid():
+            # Procesar el formulario y guardar el curso
+            nuevo_atleta = Atleta(
+                 nombre=form.cleaned_data['nombre'],
+                 apellido=form.cleaned_data['apellido'],
+                 email=form.cleaned_data['email'],
+                 edad=form.cleaned_data['edad'],
+                 deporte=form.cleaned_data['deporte'],
+                 fecha_inscripcion=form.cleaned_data['fecha_inscripcion'],     
+            )
+            nuevo_atleta.save()
+            return redirect('inicio')
+    else:
+        form = AtletaForm()  
+        return render(request, "mi_primer_app/crear_atleta.html", {"form":form})
 
-def cursos(request):
-    cursos = Curso.objects.all()
-    return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos})
+def crear_deporte(request):
+    if request.method == 'POST':
+        form = DeporteForm(request.POST)
+        if form.is_valid():
+            # Procesar el formulario y guardar el curso
+            nuevo_deporte = Deporte(
+                nombre=form.cleaned_data['nombre'],
+                profesor=form.cleaned_data['profesor'],
+                dias=form.cleaned_data['dias'],
+                horarios=form.cleaned_data['horarios'],                
+            )
+            nuevo_deporte.save()
+            return redirect('inicio')
+    else:
+        form = DeporteForm()  
+        return render(request, "mi_primer_app/crear_deporte.html", {"form":form})
+    
+def deportes(request):
+    deportes = Deporte.objects.all()
+    return render(request, 'mi_primer_app/deportes.html', {'deportes': deportes})
 
-def buscar_cursos(request):
+def buscar_deportes(request):
     if request.method == 'GET':
         nombre = request.GET.get('nombre', '')
-        cursos = Curso.objects.filter(nombre__icontains=nombre)
-        return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
-    
+        deportes = Deporte.objects.filter(nombre__icontains=nombre)
+        return render(request, 'mi_primer_app/deportes.html', {'deportes': deportes, 'nombre': nombre})

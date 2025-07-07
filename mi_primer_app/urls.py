@@ -1,13 +1,11 @@
 from django.urls import path
-from .views import saludo, saludo_con_template, crear_familiar, inicio, crear_curso, crear_estudiante, buscar_cursos, cursos
+from .views import inicio, crear_profesor, crear_atleta, crear_deporte, deportes, buscar_deportes
 
 urlpatterns = [
     path('', inicio, name= 'inicio'),
-    path('hola-mundo/', saludo),
-    path('hola-mundo-templates/', saludo_con_template),
-    path('crear-familiar/<str:nombre>/', crear_familiar),
-    path('crear-curso/', crear_curso, name='crear-curso'),  
-    path('crear-estudiante/', crear_estudiante, name='crear-estudiante'),
-    path('cursos/', cursos, name='cursos'),
-    path('cursos/buscar', buscar_cursos, name='buscar-cursos'),
+    path('crear-profesor/', crear_profesor, name='crear-profesor'),
+    path('crear-atleta/', crear_atleta, name='crear-atleta'),
+    path('crear-deporte/', crear_deporte, name='crear-deporte'),   
+    path('deportes/', deportes, name='deportes'),
+    path('deportes/buscar', buscar_deportes, name='buscar-deportes'),
 ]

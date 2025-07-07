@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Familiar, Curso, Estudiante
+from .models import Profesor, Atleta, Deporte
 
-register_models = [Familiar, Curso, Estudiante]
+register_models = [Profesor, Atleta, Deporte]
 
 admin.site.register(register_models)

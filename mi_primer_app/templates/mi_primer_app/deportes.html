@@ -1,0 +1,26 @@
+{% extends "padre.html" %}
+
+{% block title %} Deporte {% endblock %}
+
+{% block content %}
+
+<h2>Buscar Deporte</h2>
+
+<form method="GET" action="{% url 'buscar-deportes' %}">
+    <input type="text" name="nombre" placeholder="Buscar deporte..." value="{{ nombre }}">
+    <button type="submit">Buscar</button>
+</form>
+
+<h2>Deporte: </h2>
+
+<ul>
+    {% for deporte in deportes %}
+        <li>{{ deporte.nombre }}</li>
+    {% empty %}
+        <li>No hay deportes ponibles.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'crear-deporte' %}">Agregar Deporte</a>
+
+{% endblock %}
