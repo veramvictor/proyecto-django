@@ -1,0 +1,10 @@
+{% extends "padre.html" %}
+{% block content %}
+
+<h1>Detalles de la Actividad seleccionada</h1>
+<p><strong>Nombre:</strong> {{ otra_actividad.nombre }}</p>
+<p><strong>Profesor:</strong> {{ otra_actividad.profesor }}</p>
+
+<a href="{% url 'listar-otras-actividades' %}">Volver</a>
+
+{% endblock %}

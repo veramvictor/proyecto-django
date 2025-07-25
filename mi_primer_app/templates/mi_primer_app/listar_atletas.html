@@ -1,0 +1,18 @@
+{% extends "padre.html" %}
+{% block content %}
+
+<h2> Lista de Atletas </h2>
+
+<ul>
+    {% for atleta in atletas %}
+          <li>{{ atleta.nombre }}</li>   
+        <a href="{% url 'detalle-atleta' atleta.pk %}">Ver Detalle</a>        
+        <a href="{% url 'eliminar-atleta' atleta.pk %}">Eliminar</a>
+    {% empty %}
+          <li>No hay Atletas anotados.</li>
+    {% endfor %}
+</ul> 
+
+<a href="{% url 'crear-atleta' %}">Agregar Otro Atleta</a> 
+
+{% endblock %}

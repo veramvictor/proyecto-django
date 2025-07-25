@@ -1,4 +1,5 @@
 from django import forms
+from .models import Otra_actividad
 
 class ProfesorForm(forms.Form):
     nombre = forms.CharField(label="Nombre", max_length=100)
@@ -20,4 +21,10 @@ class DeporteForm(forms.Form):
     profesor = forms.CharField(label="Profesor", max_length=100)
     dias = forms.CharField(label="Días", max_length=100)
     horarios = forms.CharField(label="Horarios", max_length=100)
+
+# Aca vamos a crear Forumlarios para Vistas Basadas en Clases.
+class Otra_actividadForm(forms.ModelForm):
+      class Meta:
+           model = Otra_actividad
+           fields = ['nombre', 'profesor']
 

@@ -1,0 +1,22 @@
+{% extends "padre.html" %}
+{% block content %}
+
+<h2> Lista de Otras Actividades </h2>
+
+<ul>
+    {% for otra_actividad in otras_actividades %}
+        <li>
+         {{ otra_actividad.nombre }}      
+        <a href="{% url 'detalle-otra-actividad' otra_actividad.pk %}">Ver Detalle</a>        
+        <a href="{% url 'editar-otra-actividad' otra_actividad.pk %}">Editar</a>
+        <a href="{% url 'eliminar-otra-actividad' otra_actividad.pk %}">Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay Actividades disponibles.</li>
+    {% endfor %}
+</ul> 
+
+<a href="{% url 'crear-otra-actividad' %}">Agregar Otra Actividad</a> 
+
+{% endblock %}
+

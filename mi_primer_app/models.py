@@ -29,3 +29,10 @@ class Atleta(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido} {self.email}"
+    
+class Otra_actividad(models.Model):
+    nombre = models.CharField(max_length=20)
+    profesor = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return f'{self.nombre} {self.profesor}'

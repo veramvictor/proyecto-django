@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mi_primer_app',
+    'mi_primer_app', # Añadimos la aplicacion mi_primer_app
+    'usuarios', # Añadimos la aplicacion usuario
 ]
 
 MIDDLEWARE = [
@@ -117,7 +118,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # Directorio para archivos estáticos personalizados
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/usuarios/login/' # URL de inicio de sesión

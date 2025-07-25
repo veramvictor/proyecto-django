@@ -1,0 +1,13 @@
+{% extends "padre.html" %}
+{% block content %}
+
+<h1>Detalles del Atleta Seleccionado</h1>
+<p><strong>Nombre:</strong> {{ atleta.nombre }}</p>
+<p><strong>Apellido:</strong> {{ atleta.apellido }}</p>
+<p><strong>Email:</strong> {{ atleta.email }}</p>
+<p><strong>Deporte:</strong> {{ atleta.deporte }}</p>
+<p><strong>Fecha de Inscripción:</strong> {{ atleta.fecha_inscripcion }}</p>
+
+<a href="{% url 'listar-atletas' %}">Volver</a>
+
+{% endblock %}

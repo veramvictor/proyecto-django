@@ -1,16 +1,13 @@
 {% extends "padre.html" %}
+{% block content%}
 
-{% block title %} Crear Deporte {% endblock %}
-
-{% block content %}
-
-<h2>Crear Deporte</h2>
+<h2> Crear Otra Actividad </h2>
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Guardar</button>
 </form>
 
-<a href="{% url 'deportes' %}">Cancelar</a>
+<a href="{% url 'listar-otras-actividades' %}">Cancelar</a>
 
 {% endblock %}

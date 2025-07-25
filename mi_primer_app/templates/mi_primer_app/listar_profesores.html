@@ -1,0 +1,20 @@
+{% extends "padre.html" %}
+{% block content %}
+
+<h2> Lista de Profesores </h2>
+
+<ul>
+    {% for profesor in profesores %}
+        <li>
+          {{ profesor.nombre }}      
+        <a href="{% url 'detalle-profesor' profesor.pk %}">Ver Detalle</a>  
+        <a href="{% url 'eliminar-profesor' profesor.pk %}">Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay Profesores cargados.</li>
+    {% endfor %}
+</ul> 
+
+<a href="{% url 'crear-profesor' %}">Agregar Otro Profesor</a> 
+
+{% endblock %}
