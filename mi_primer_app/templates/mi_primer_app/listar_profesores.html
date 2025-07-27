@@ -8,6 +8,7 @@
         <li>
           {{ profesor.nombre }}      
         <a href="{% url 'detalle-profesor' profesor.pk %}">Ver Detalle</a>  
+        <a href="{% url 'editar-profesor' profesor.pk %}">Editar</a> 
         <a href="{% url 'eliminar-profesor' profesor.pk %}">Eliminar</a>
         </li>
     {% empty %}

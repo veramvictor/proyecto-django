@@ -16,8 +16,11 @@
 <ul>
     {% for deporte in deportes %}
         <li>{{ deporte.nombre }}</li>
+        <a href="{% url 'detalle-deporte' deporte.pk %}">Ver Detalle</a>    
+        <a href="{% url 'editar-deporte' deporte.pk %}">Editar</a>
+        <a href="{% url 'eliminar-deporte' deporte.pk %}">Eliminar</a>  
     {% empty %}
-        <li>No hay deportes ponibles.</li>
+        <li>No hay deportes disponibles.</li>
     {% endfor %}
 </ul>
 

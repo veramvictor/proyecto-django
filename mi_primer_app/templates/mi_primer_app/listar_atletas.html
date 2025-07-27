@@ -6,7 +6,8 @@
 <ul>
     {% for atleta in atletas %}
           <li>{{ atleta.nombre }}</li>   
-        <a href="{% url 'detalle-atleta' atleta.pk %}">Ver Detalle</a>        
+        <a href="{% url 'detalle-atleta' atleta.pk %}">Ver Detalle</a> 
+        <a href="{% url 'editar-atleta' atleta.pk %}">Editar</a>       
         <a href="{% url 'eliminar-atleta' atleta.pk %}">Eliminar</a>
     {% empty %}
           <li>No hay Atletas anotados.</li>

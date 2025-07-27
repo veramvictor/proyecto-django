@@ -1,0 +1,15 @@
+{% extends "padre.html" %}
+{% block content %}
+
+<h1>Detalles del Deporte Seleccionado</h1>
+
+{% if deportes %}
+        <p><strong>Nombre:</strong> {{ deportes.nombre }}</p>
+        <p><strong>Profesor:</strong> {{ deportes.profesor }}</p>
+        <p><strong>Días:</strong> {{ deportes.dias }}</p>
+        <p><strong>Horaio:</strong> {{ deportes.horarios }}</p>
+{% endif %}
+
+<a href="{% url 'deportes' %}">Volver</a>
+
+{% endblock %}
